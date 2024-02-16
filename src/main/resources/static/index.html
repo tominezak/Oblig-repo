@@ -8,9 +8,23 @@
 <body>
     <h1>Bestilling av kinobilletter</h1>
 
-    Velg film: <!--Rullgarding med valg-->
+    <label for="film">Velg film:</label>
 
-    Antall: <input type="number" id="antall" value=""/> </br>
+    <select name="film" id="film">
+        <option disabled selected hidden>Velg film her</option>
+        <option>Captain America</option>
+        <option>The Notebook</option>
+        <option>Madame Web</option>
+        <option>Anyone But You</option>
+    </select>
+
+    </br>
+    </br>
+
+    Antall: <input type="number" id="antall" value=""/>
+
+    </br>
+    </br>
 
     <table>
         <tr>
@@ -34,13 +48,11 @@
         </tr>
     </table>
 </br>
+
 <h2>Alle billetter</h2>
+<div id="output"></div>
 
-
-
-
-
-
+<button onclick="slettBilletter()">Slett alle billettene</button>
 
 
 </body>
