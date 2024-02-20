@@ -84,8 +84,9 @@ function kjopBillett() {
             return false;
         }
         //Tester om inputboksen for telefonnr er tom, om telefonnummeret ikke er et tall eller om det ikke tilsvarer 8 siffre. Skriver ut feilmelding.
-        if (telefonnr === "" || isNaN(Number(telefonnr)) || telefonnr.length !== 8) {
-            document.getElementById("feilTelefonnr").innerHTML = "Skriv inn et telefonnr på åtte siffer";
+        let telefonnrReg = /^\d{7,15}$/;
+        if (telefonnr === "" || !telefonnrReg.test(telefonnr)) {
+            document.getElementById("feilTelefonnr").innerHTML = "Skriv inn et gyldig telefonnr";
             return false;
         }
 
