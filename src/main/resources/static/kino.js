@@ -25,7 +25,7 @@ function kjopBillett() {
     }
 
     function formaterData(billett){
-          let ut = "<table><tr>" +
+          let ut = "<table class='table table-striped'><tr>" +  //Gjør at annenhver rad får annen bakgrunnsfarge
               "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>" +
               "</tr>";
            for (let b of billett) {
