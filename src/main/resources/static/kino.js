@@ -1,72 +1,62 @@
-
-let billettliste = []; //Oppretter arrayet
-
 function kjopBillett() {
     if (inputValidering()) { //kjører funksjonen dersom valideringstesten bestås
-
-        //Henter input-verdiene fra bruker
-        let film = document.getElementById("film").value;
-        let antall = document.getElementById("antall").value;
-        let fornavn = document.getElementById("fornavn").value;
-        let etternavn = document.getElementById("etternavn").value;
-        let telefonnr = document.getElementById("telefonnr").value;
-        let epost = document.getElementById("epost").value;
-
-        //oppretter et objekt med alle attributtene
         const billett = {
-            film,
-            antall,
-            fornavn,
-            etternavn,
-            telefonnr,
-            epost
+            film: $("#film").val(),
+            antall: $("#antall").val(),
+            fornavn: $("#fornavn").val(),
+            etternavn: $("#etternavn").val(),
+            telefonnr: $("#telefonnr").val(),
+            epost: $("#epost").val()
         };
 
-        //legger til objektet i arrayet
-        billettliste.push(billett); //legger til billetten i arrayet
-
-        //Skriver ut billettinformasjonen ved bruk av table-tagen og en for-løkke
-        let ut = "<table><tr>" +
-            "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>" +
-            "</tr>";
-        for (let b of billettliste) {
-            ut += "<tr>";
-            ut += "<td>" + b.film + "</td><td>" + b.antall + "</td><td>" + b.fornavn + "</td><td>" + b.etternavn + "</td><td>" + b.telefonnr + "</td><td>" + b.epost + "</td>";
-            ut += "</tr>";
-        }
-        //Printer ut informasjon om billetten under Alle billetter
-        document.getElementById("output").innerHTML = ut;
+        $.post("/lagreBillett", billett, function(data) {
+            hentBilletter();
+        });
 
         //blanker ut inputboksene
-        document.getElementById("film").value = "";
-        document.getElementById("antall").value = "";
-        document.getElementById("fornavn").value = "";
-        document.getElementById("etternavn").value = "";
-        document.getElementById("telefonnr").value = "";
-        document.getElementById("epost").value = "";
+        $("#film, #antall, #fornavn, #etternavn, #telefonnr, #epost").val("");
     }
 }
 
+    function hentBilletter() {
+        $.get("/hentBilletter", function (billett) {
+           formaterData(billett);
+        });
+    }
+
+    function formaterData(billett){
+          let ut = "<table><tr>" +
+              "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>" +
+              "</tr>";
+           for (let b of billett) {
+               ut += "<tr>";
+               ut += "<td>" + b.film + "</td><td>" + b.antall + "</td><td>" + b.fornavn + "</td><td>" + b.etternavn + "</td><td>" + b.telefonnr + "</td><td>" + b.epost + "</td>";
+               ut += "</tr>";
+           }
+           ut+= "</table>";
+           $("#output").html(ut);
+    }
+
     function slettBilletter() {
         //Setter arrayet tomt dersom man trykker på Slett billetter
-        billettliste = [];
-        document.getElementById("output").innerHTML = "";
+        $.get("/slettBilletter", function () {
+           hentBilletter();
+        })
 }
 
     function inputValidering() {
         //Henter inn input-verdiene fra bruker
-        let antall = document.getElementById("antall").value;
-        let fornavn = document.getElementById("fornavn").value;
-        let etternavn = document.getElementById("etternavn").value;
-        let telefonnr = document.getElementById("telefonnr").value;
-        let epost = document.getElementById("epost").value;
+          let antall=   $("#antall").val()
+          let fornavn = $("#fornavn").val()
+          let etternavn=$("#etternavn").val()
+          let telefonnr = $("#telefonnr").val()
+          let epost = $("#epost").val();
 
         //Setter inputboksen tom dersom det skrives inn feil input og feilmeldingen forsvinner dersom det kjøres på nytt
-        document.getElementById("feilAntall").innerHTML = "";
-        document.getElementById("feilFornavn").innerHTML = "";
-        document.getElementById("feilEtternavn").innerHTML = "";
-        document.getElementById("feilTelefonnr").innerHTML = "";
-        document.getElementById("feilEpost").innerHTML = "";
+        $("#feilFornavn").html("");
+        $("#feilEtternavn").html("");
+        $("#feilTelefonnr").html("");
+        $("#feilEpost").html("");
 
         //Tester om antall billetter mindre eller lik nul og om det ikke er et tall. Skriver ut feilmelding.
         if (antall<=0 || isNaN(Number(antall))) {
