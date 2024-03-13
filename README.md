@@ -1,4 +1,4 @@
-# Oblig1
+# Oblig
 
 Navn: Tomine Garborg Zakariassen
 
