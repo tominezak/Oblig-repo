@@ -44,6 +44,13 @@ function kjopBillett() {
         })
 }
 
+function slettEn(id){
+    let url = "/slettEn?id="+id;
+    $.get(url, function(){
+        hentBilletter();
+    })
+}
+
     function inputValidering() {
         //Henter inn input-verdiene fra bruker
           let antall=   $("#antall").val()
