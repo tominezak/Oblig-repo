@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -19,7 +20,8 @@ public class BillettRepository {
 
     public List<Billett> hentBilletter() {
         String sql = " SELECT * FROM Billett"; //bygger opp en sql spørring
-        List<Billett> alleBilletter = db.query(sql, new BeanPropertyRowMapper(Billett.class));
+        List<Billett> alleBilletter = db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
+        Collections.sort(alleBilletter);
         return alleBilletter;
     }
 

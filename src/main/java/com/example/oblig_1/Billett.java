@@ -1,6 +1,8 @@
 package com.example.oblig_1;
 
-public class Billett {
+public class Billett implements Comparable<Billett> {
+
+
     private String film, fornavn, etternavn, epost;
     private int antall, telefonnr;
 
@@ -59,5 +61,10 @@ public class Billett {
 
     public void setTelefonnr(int telefonnr) {
         this.telefonnr = telefonnr;
+    }
+
+    @Override
+    public int compareTo(Billett annenBillett) {
+        return this.getEtternavn().compareTo(annenBillett.getEtternavn());
     }
 }
