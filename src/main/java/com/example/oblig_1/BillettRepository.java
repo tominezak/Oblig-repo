@@ -3,9 +3,11 @@ package com.example.oblig_1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class BillettRepository {
     @Autowired
     private JdbcTemplate db; //aksesserer databasen
@@ -24,10 +26,5 @@ public class BillettRepository {
     public void slettAlleBilletter() {
         String sql = "DELETE FROM Billett"; //Sletter alle radene
         db.update(sql);
-    }
-
-    public void slettEn(int id){
-        String sql = "DELETE FROM Billett WHERE id=?;";
-        db.update(sql, id);
     }
 }
