@@ -10,4 +10,4 @@ For oblig 2: Flyttet lagringen til server. Brukt Spring Boot og Java for å lagr
 
 For oblig 3: Byttet ut arrayet på serversiden med en tabell i relasjonsdatabase. Implementert Comparable interface og brukt Collection sin sort til å sortere billettene etter etternavn.
 
-Link til videoopptak: https://vimeo.com/934824415?share=copy
+Link til videoopptak: https://vimeo.com/936668333?share=copy
