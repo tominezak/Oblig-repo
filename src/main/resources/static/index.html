@@ -12,58 +12,10 @@
 
     <br>
     <br>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-        <form class="form">
-            <div class="form-group">
-            <!--Oppretter en nedtrekksmeny og fjerner valget for velg film som option -->
-            <label for="film">Velg film: </label>
-            <select name="film" id="film">
-                <option disabled selected hidden>Velg film her</option>
-                <option>Captain America</option>
-                <option>The Notebook</option>
-                <option>Madame Web</option>
-                <option>Anyone But You</option>
-            </select>
-            </div>
-            <!-- Oppretter en input for antall og en span for en potensiell feilmelding -->
-            <div class="form-group">
-                <label for="antall">Antall:</label>
-                <input type="number" id="antall" value=""/><span id="feilAntall" style="font-weight: bold; color: red;"></span>
-            </div>
-            <div class="form-group">
-                <label for="fornavn">Fornavn: </label>
-                <input type="text" class="form-control" id="fornavn"/><span id="feilFornavn" style="font-weight: bold; color: red;"></span>
-            </div>
-            <div class="form-group">
-                <label for="etternavn">Etternavn: </label>
-                <input type="text" class="form-control" id="etternavn"/><span id="feilEtternavn" style="font-weight: bold; color: red;"></span>
-            </div>
-            <div class="form-group">
-                <label for="telefonnr">Telefonnr: </label>
-                <input type="text" class="form-control" id="telefonnr"/><span id="feilTelefonnr" style="font-weight: bold; color: red;"></span>
-            </div>
-            <div class="form-group">
-                <label for="epost">Epost: </label>
-                <input type="text" class="form-control" id="epost"/><span id="feilEpost" style="font-weight: bold; color: red;"></span>
-            </div>
-        </form>
-
-        <button class="btn btn-primary" onclick="kjopBillett()">Kjøp billett</button>
-            </div>
-            <div class="col-md-8">
-</br>
-
-<h2>Alle billetter</h2>
-    <!--Oppretter en div hvor informasjonen om billetten skrives ut og legger til et responsivt design-->
-<div id="output" class="table-responsive"></div>
-
-    <!--Oppretter en knapp for sletting av billetter og gir den en rød styling-->
-<button class="btn btn-danger" onclick="slettBilletter()">Slett alle billettene</button>
-            </div>
-        </div>
-    </div>
+    <table class="table">
+        <div id="output" class="table-responsive"></div>
+    </table>
+    <a class="btn btn-primary" href="registrere.html">Register ny billett</a>
+    <a class="btn btn-danger" onclick="slettBilletter()" >Slett alle billetter</a>
 </body>
 </html>

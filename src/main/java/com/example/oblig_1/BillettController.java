@@ -18,8 +18,25 @@ public class BillettController {
     public List<Billett> hentBilletter() {
         return rep.hentBilletter();
     }
+
+    @GetMapping("/hentEnBillett")
+    public Billett hentEnBillett(int id){
+        return rep.hentEnBillett(id);
+    }
+
+    @PostMapping("/endreEnBillett")
+    public void endreEnBillett(Billett billett){
+        rep.endreEnBillett(billett);
+    }
+
+    @GetMapping("/slettEnBillett")
+    public void slettEnBillett(int id){
+        rep.slettEnBillett(id);
+    }
     @GetMapping("/slettBilletter")
     public void slettBilletter() {
         rep.slettAlleBilletter();
     }
+
+
 }

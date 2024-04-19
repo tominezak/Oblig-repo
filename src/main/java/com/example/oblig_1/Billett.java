@@ -4,17 +4,27 @@ public class Billett implements Comparable<Billett> {
 
 
     private String film, fornavn, etternavn, epost;
-    private int antall, telefonnr;
+    private int antall, telefonnr, id;
 
-    public Billett(String film, String fornavn, String etternavn, String epost, int antall, int telefonnr) {
+    public Billett(String film, String fornavn, String etternavn, String epost, int antall, int telefonnr, int id) {
         this.film = film;
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.epost = epost;
         this.antall = antall;
         this.telefonnr = telefonnr;
+        this.id = id;
     }
     public Billett() { }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFilm() {
         return film;
     }
@@ -65,6 +75,6 @@ public class Billett implements Comparable<Billett> {
 
     @Override
     public int compareTo(Billett annenBillett) {
-        return this.getEtternavn().compareTo(annenBillett.getEtternavn());
+        return this.getEtternavn().compareToIgnoreCase(annenBillett.getEtternavn());
     }
 }
