@@ -49,7 +49,7 @@ function inputValidering() {
     //Tester om inputboksen for telefonnr er tom, om telefonnummeret ikke er et tall eller om det ikke tilsvarer 8 siffre. Skriver ut feilmelding.
     let telefonnrReg = /^\d{7,15}$/;
     if (telefonnr === "" || !telefonnrReg.test(telefonnr)) {
-        document.getElementById("feilTelefonnr").innerHTML = "Skriv inn et gyldig telefonnr";
+        document.getElementById("feilTelefonnr").innerHTML = "Skriv inn et gyldig telefonnr bestående av 8 tall";
         return false;
     }
 
