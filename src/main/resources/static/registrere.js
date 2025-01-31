@@ -11,9 +11,7 @@ function regBillett() {
         };
         $.post("/lagreBillett", billett, function () {
             window.location.href = "/";
-
         });
-
     }
 }
 
@@ -59,7 +57,6 @@ function inputValidering() {
         document.getElementById("feilEpost").innerHTML = "Skriv inn en gyldig epost";
         return false;
     }
-
     return true;
 }
 
